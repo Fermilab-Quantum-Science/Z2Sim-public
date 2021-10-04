@@ -1,0 +1,6 @@
+numpy
+qsimcirq
+cirq==0.11.0
+scipy
+networkx
+matplotlib

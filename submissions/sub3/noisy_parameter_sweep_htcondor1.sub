@@ -1,0 +1,15 @@
+universe                = vanilla
+executable              = noisy_parameter_sweep_htcondor1.sh
+should_transfer_files   = YES
+arguments               = $(Process)
+# The wheel contains our source code and will be installed in the bash script
+transfer_input_files    = noisy_parameter_sweep_htcondor.py,../../dist/z2_sim-0.1-py3-none-any.whl
+when_to_transfer_output = ON_EXIT
+
+# This output directory is hardcoded into the input python script
+transfer_output_files   = temp/
+output                  = htcondorout/out.$(Cluster)-$(Process)
+error                   = htcondorout/err.$(Cluster)-$(Process)
+log                     = htcondorout/log.$(Cluster)-$(Process)
+request_memory          = 10GB
+queue 10
